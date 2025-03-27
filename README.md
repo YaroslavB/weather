@@ -32,7 +32,7 @@ To build the Docker containers, run:
 docker-compose build
 ```
 
-##Run
+## Run
 
 To start the application, run:
 ```sh
@@ -40,5 +40,5 @@ docker-compose up -d
 ```
 This will start the PHP and Nginx containers.
 
-##Access the Application
+## Access the Application
 Once the containers are up and running, you can access the application in your web browser at http://localhost.
