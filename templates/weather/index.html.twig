@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Weather!{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            {{ form_start(form) }}
+            <div class="mb-3">
+                <div class="col-md-1">
+                    {{ form_label(form.city) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_widget(form.city) }}
+                    <div class="form-error">
+                        {{ form_errors(form.city) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Get Weather</button>
+                </div>
+
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+
+        {% if weather is not empty %}
+            <h2>Weather in {{ weather.city }}</h2>
+            <p>Temperature: {{ weather.temperature }}°C</p>
+            <p>Condition: {{ weather.condition }}</p>
+            <p>Humidity: {{ weather.humidity }}%</p>
+            <p>Wind Speed: {{ weather.wind_speed }} kph</p>
+            <p>Last Updated: {{ weather.last_updated }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

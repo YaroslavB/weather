@@ -1,6 +1,6 @@
 
 services:
-  app:
+  php:
     build:
       context: ./docker/php
     container_name: weather_app
@@ -10,9 +10,23 @@ services:
       - "9000:9000"
       - "8000:8000"
     volumes:
-      - .:/var/www
+      - .:/var/www/weather
     networks:
       - weather
+
+  nginx:
+    container_name: weather_nginx
+    build:
+      context: ./docker/nginx
+    volumes:
+      - ./:/var/www/weather
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+    networks:
+      - weather
+
 networks:
   weather:
     driver: bridge

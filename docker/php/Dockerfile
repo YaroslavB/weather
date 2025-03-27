@@ -22,9 +22,11 @@ WORKDIR /var/www
 COPY . .
 
 # Устанавливаем зависимости через Composer
-#RUN composer install --no-dev --no-interaction --prefer-dist
+RUN composer install --no-dev --no-interaction --prefer-dist
 
 # Настраиваем права доступа
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www/weather
+USER www-data
+
 
 CMD ["php-fpm"]
